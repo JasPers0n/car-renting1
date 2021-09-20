@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car - form</title>
+</head>
+<body>
+<form method="post" autocomplete="off" th:object="${car}">
+    <div>
+        <label>Make: <input type="text" th:field="*{brand}"></label>
+    </div>
+    <div>
+        <label>Model: <input type="text" th:field="*{model}"></label>
+    </div>
+    <input type="submit" value="Zatwierdź">
+</form>
+</body>
+</html>
