@@ -5,10 +5,12 @@ import com.example.carrenting.repository.ClientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/client")
 public class ClientController {
 
     private ClientRepository clientRepository;
@@ -17,10 +19,10 @@ public class ClientController {
         this.clientRepository = clientRepository;
     }
 
-    @GetMapping("/client-list")
+    @GetMapping("/client")
     public String GetAllClients(Model model){
         List<Client> clients = clientRepository.findAll();
-        model.addAttribute( "client", clients);
+        model.addAttribute( "clients", clients);
         return "/client-list";
     }
 
