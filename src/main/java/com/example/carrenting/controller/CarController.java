@@ -20,16 +20,7 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
-    @GetMapping("/add") // http://localhost:8080/car/add
-    public String example3Form(@ModelAttribute("car") Car car) {
-        return "car/form";
-    }
 
-    @PostMapping("/add") // http://localhost:8080/car/add
-    public String example3Result(@ModelAttribute("car") Car car) {
-        carRepository.save(car);
-        return "car/result";
-    }
     @GetMapping("/list") // http://localhost:8080/car/list
     public String example4(Model model) {
         List<Car> cars = carRepository.findAll();

@@ -11,6 +11,7 @@
         <th>Model</th>
     </tr>
     <tr th:each="car: ${cars}">
+        <td th:text="${car.id}"></td>
         <td th:text="${car.brand}"></td>
         <td th:text="${car.model}"></td>
     </tr>
