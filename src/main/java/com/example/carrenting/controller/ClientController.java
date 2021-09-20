@@ -23,7 +23,7 @@ public class ClientController {
     public String GetAllClients(Model model){
         List<Client> clients = clientRepository.findAll();
         model.addAttribute( "clients", clients);
-        return "/client-list";
+        return "/client/client-list";
     }
 
 
