@@ -11,12 +11,12 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String make;
+    private String brand;
     private String model;
 
     public Car(Long id, String brand, String model) {
         this.id = id;
-        this.make = brand;
+        this.brand = brand;
         this.model = model;
     }
 
@@ -33,12 +33,12 @@ public class Car {
         this.id = id;
     }
 
-    public String getMake() {
-        return make;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setMake(String brand) {
-        this.make = brand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
@@ -53,7 +53,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", make='" + make + '\'' +
+                ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 '}';
     }
