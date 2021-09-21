@@ -20,10 +20,10 @@ public class ClientController {
     }
 
     @GetMapping("/client-list")
-    public String GetAllClients(Model model){
+    public String getAllClients(Model model){
         List<Client> clients = clientRepository.findAll();
         model.addAttribute( "clients", clients);
-        return "client/client-list";
+        return "/client/client-list";
     }
 
 
