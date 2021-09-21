@@ -5,6 +5,8 @@ import com.example.carrenting.repository.CarRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -25,4 +27,16 @@ public class CarController {
         model.addAttribute("cars", cars);
         return "car/car-list";
     }
+
+    @GetMapping ("/add") // http://localhost:8080/car/add
+    public String AddForm(@ModelAttribute("car")Car car){
+        return "car/form";
+    }
+
+    @PostMapping("/add") // http://localhost:8080/car/add
+    public String AddResult(@ModelAttribute("car")Car car){
+        carRepository.save(car);
+        return "car/result";
+    }
+
 }
