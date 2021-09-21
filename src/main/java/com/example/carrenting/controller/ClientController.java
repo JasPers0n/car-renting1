@@ -19,11 +19,11 @@ public class ClientController {
         this.clientRepository = clientRepository;
     }
 
-    @GetMapping("/client")
+    @GetMapping("/client-list")
     public String GetAllClients(Model model){
         List<Client> clients = clientRepository.findAll();
         model.addAttribute( "clients", clients);
-        return "/client/client-list";
+        return "client/client-list";
     }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>List of Clients</title>
@@ -13,12 +13,12 @@
         <th>address</th>
     </tr>
     <tr th:each="client: ${clients}">
+        <td th:text="${client.id}"></td>
         <td th:text="${client.name}"></td>
         <td th:text="${client.surname}"></td>
         <td th:text="${client.email}"></td>
         <td th:text="${client.address}"></td>
     </tr>
 </table>
-
 </body>
 </html>
