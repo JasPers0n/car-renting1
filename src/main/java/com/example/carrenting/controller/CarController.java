@@ -19,10 +19,10 @@ public class CarController {
     }
 
 
-    @GetMapping("/list") // http://localhost:8080/car/list
+    @GetMapping("/car-list") // http://localhost:8080/car/list
     public String example4(Model model) {
         List<Car> cars = carRepository.findAll();
         model.addAttribute("cars", cars);
-        return "car/list";
+        return "car/car-list";
     }
 }
