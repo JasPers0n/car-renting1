@@ -10,7 +10,8 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+
     private String name;
     private String surname;
     private String email;
@@ -27,7 +28,7 @@ public class Client {
         this.address = address;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,7 +52,7 @@ public class Client {
         return address;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
