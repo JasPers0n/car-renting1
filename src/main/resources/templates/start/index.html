@@ -10,17 +10,44 @@
 </head>
 <body>
     <div class="container my-2">
-        <nav class="nav nav-pills flex-column flex-sm-row">
-      <!--  <a th:href="@{/employee/employee-list}" class="btn btn-primary btn-sm mb-3">  Employees </a>
+        <!--<nav class="nav nav-pills flex-column flex-sm-row">
+      &lt;!&ndash;  <a th:href="@{/employee/employee-list}" class="btn btn-primary btn-sm mb-3">  Employees </a>
         <a th:href="@{/car/car-list}" class="btn btn-primary btn-sm mb-3">  Cars </a>
-         <a th:href = "@{/client/client-list}" class="btn btn-primary btn-sm mb-3"> Clients </a-->
+         <a th:href = "@{/client/client-list}" class="btn btn-primary btn-sm mb-3"> Clients </a&ndash;&gt;
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <a class="flex-sm-fill text-sm-center nav-link active" th:href = "@{/client/client-list}">Clients</a>
                 <a class="flex-sm-fill text-sm-center nav-link active" th:href="@{/car/car-list}">Cars</a>
                 <a class="flex-sm-fill text-sm-center nav-link active" th:href="@{/employee/employee-list}">Employees</a>
-                <a class="flex-sm-fill text-sm-center nav-link disabled" th:href="@{start/about}">About</a>
+                <a class="flex-sm-fill text-sm-center nav-link disabled" th:href="@{/about}">About</a>
             </ul>
+        </nav>-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" >Car Rental</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href = "@{/client/client-list}">Clients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/employee/employee-list}">Employee</a>
+                        </li>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/car/car-list}">Cars</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
         </nav>
     </div>
 </body>
