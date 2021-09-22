@@ -36,12 +36,12 @@ public class BookingController {
     @PostMapping("/saveBooking")
     public String saveEmployee(@ModelAttribute("employee") Booking booking) {
         bookingService.saveBooking(booking);
-        return "redirect:/employee/employee-list";
+        return "redirect:/booking/booking-list";
     }
 
     @GetMapping("booking-list")
     public String showBookingList(Model model){
-        model.addAttribute("listBooking", bookingService.getAll());
+        model.addAttribute("list", bookingService.getAll());
         return "/booking/booking-list";
     }
 

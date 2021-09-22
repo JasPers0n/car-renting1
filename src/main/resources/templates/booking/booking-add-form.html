@@ -11,23 +11,26 @@
 <body>
 
 <div class="container">
-    <h1>Employee Management System</h1>
+    <h1>Booking Management System</h1>
     <hr>
-    <h2>Save Employee</h2>
+    <h2>Book a Car</h2>
 
     <form action="#" th:action="@{/booking/saveBooking}" th:object="${booking}"
           method="POST">
-        <input type="text" th:field="*{bookingDay}"
+        <input type="date" th:field="*{bookingDay}"
                placeholder="bookingDay" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{start}"
-               placeholder="Employee Last Name" class="form-control mb-4 col-4">
+        <input type="date" th:field="*{start}"
+               placeholder="Start" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{end}"
-               placeholder="Employee Position(EMPLOYEE, MANAGER)" class="form-control mb-4 col-4">
+        <input type="date" th:field="*{end}"
+               placeholder="End" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{branch}"
-               placeholder="Employee Branch" class="form-control mb-4 col-4">
+               placeholder="Branch" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{price}"
+               placeholder="Price" class="form-control mb-4 col-4">
 
         <select select class="form-select" aria-label="Default select example" th:field="*{client}">
             <option th:each="client: ${client}" th:value="${client.id}" th:text="${client.getFullName}"></option>

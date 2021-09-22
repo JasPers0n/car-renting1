@@ -1,7 +1,10 @@
 package com.example.carrenting.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 public class Booking {
@@ -10,9 +13,12 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String bookingDay;
-    private String start;
-    private String end;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate bookingDay;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate start;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate end;
     private String branch;
     private BigDecimal price;
 
@@ -25,7 +31,7 @@ public class Booking {
     public Booking(){
     }
 
-    public Booking(long id, String bookingDay, String start, String end, String branch, BigDecimal price, Car car, Client client) {
+    public Booking(long id, LocalDate bookingDay, LocalDate start, LocalDate end, String branch, BigDecimal price, Car car, Client client) {
         this.id = id;
         this.bookingDay = bookingDay;
         this.start = start;
@@ -44,27 +50,27 @@ public class Booking {
         this.id = id;
     }
 
-    public String getBookingDay() {
+    public LocalDate getBookingDay() {
         return bookingDay;
     }
 
-    public void setBookingDay(String bookingDay) {
+    public void setBookingDay(LocalDate bookingDay) {
         this.bookingDay = bookingDay;
     }
 
-    public String getStart() {
+    public LocalDate getStart() {
         return start;
     }
 
-    public void setStart(String from) {
+    public void setStart(LocalDate from) {
         this.start = from;
     }
 
-    public String getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(String to) {
+    public void setEnd(LocalDate to) {
         this.end = to;
     }
 
