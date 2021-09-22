@@ -1,6 +1,7 @@
 package com.example.carrenting.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Booking {
@@ -13,23 +14,27 @@ public class Booking {
     private String start;
     private String end;
     private String branch;
-    private int price;
+    private BigDecimal price;
 
     @ManyToOne
     private Car car;
 
+    @ManyToOne
+    private Client client;
+
     public Booking(){
     }
 
-    public Booking(String bookingDay, String start, String to, String branch, int price) {
+    public Booking(long id, String bookingDay, String start, String end, String branch, BigDecimal price, Car car, Client client) {
+        this.id = id;
         this.bookingDay = bookingDay;
         this.start = start;
-        this.end = to;
+        this.end = end;
         this.branch = branch;
         this.price = price;
+        this.car = car;
+        this.client = client;
     }
-
-
 
     public long getId() {
         return id;
@@ -71,24 +76,41 @@ public class Booking {
         this.branch = branch;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
                 ", bookingDay='" + bookingDay + '\'' +
-                ", from='" + start + '\'' +
-                ", to='" + end + '\'' +
+                ", start='" + start + '\'' +
+                ", end='" + end + '\'' +
                 ", branch='" + branch + '\'' +
                 ", price=" + price +
+                ", car=" + car +
+                ", client=" + client +
                 '}';
     }
 }
