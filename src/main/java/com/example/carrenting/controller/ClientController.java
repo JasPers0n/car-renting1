@@ -1,10 +1,14 @@
 package com.example.carrenting.controller;
 
+import com.example.carrenting.entity.Car;
 import com.example.carrenting.entity.Client;
+import com.example.carrenting.entity.Employee;
 import com.example.carrenting.repository.ClientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -20,12 +24,23 @@ public class ClientController {
     }
 
     @GetMapping("/client-list")
-    public String getAllClients(Model model){
+    public String getAllClients(Model model) {
         List<Client> clients = clientRepository.findAll();
-        model.addAttribute( "clients", clients);
+        model.addAttribute("clients", clients);
         return "/client/client-list";
     }
 
+    @GetMapping("/add") // http://localhost:8080/car/add
+    public String addForm(@ModelAttribute("client") Client client) {
+        return "client/form";
+
+    }
+
+    @PostMapping("/add")
+    public String addResult(@ModelAttribute("client") Client client) {
+        clientRepository.save(client);
+        return "client/result";
+    }
 
 
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+Saved Client Data: Name: <strong th:text="${client.name}"></strong>
+Surname <strong th:text="${client.surname}"></strong>
+Email: <strong th:text="${client.email}"></strong>
+Address: <strong th:text="${client.address}"></strong>
+<br>
+<a th:href="@{/client/client-list.html}">Clients list</a>
+</body>
+</html>
