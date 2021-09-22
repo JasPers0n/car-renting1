@@ -4,12 +4,10 @@ import com.example.carrenting.entity.Car;
 import com.example.carrenting.entity.Client;
 import com.example.carrenting.entity.Employee;
 import com.example.carrenting.repository.ClientRepository;
+import com.example.carrenting.service.ClientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,30 +15,42 @@ import java.util.List;
 @RequestMapping("/client")
 public class ClientController {
 
-    private ClientRepository clientRepository;
+    private ClientService clientService;
 
-    public ClientController(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     @GetMapping("/client-list")
-    public String getAllClients(Model model) {
-        List<Client> clients = clientRepository.findAll();
-        model.addAttribute("clients", clients);
+    public String viewClientList(Model model) {
+        model.addAttribute("listClients", clientService.getAll());
         return "/client/client-list";
     }
 
-    @GetMapping("/add") // http://localhost:8080/car/add
-    public String addForm(@ModelAttribute("client") Client client) {
-        return "client/form";
-
+    @GetMapping("/showAddClientForm")
+    public String showAddClientForm(Model model) {
+        Client client = new Client();
+        model.addAttribute("client", client);
+        return "/client/client-add-form";
     }
 
-    @PostMapping("/add")
-    public String addResult(@ModelAttribute("client") Client client) {
-        clientRepository.save(client);
-        return "client/result";
+    @PostMapping("/saveClient")
+    public String saveClient(@ModelAttribute("client") Client client) {
+        clientService.saveClient(client);
+        return "redirect:/client/client-list";
     }
 
+    @GetMapping("/showClientUpdateForm/{id}")
+    public String showClientUpdateForm(@PathVariable Long id, Model model) {
+        Client client = clientService.getClientById(id);
+        model.addAttribute("client", client);
+        return "/client/client-update-form";
+    }
+
+    @GetMapping("/deleteClient/{id}")
+    public String deleteClient(@PathVariable Long id) {
+        clientService.deleteClientById(id);
+        return "redirect:/client/client-list";
+    }
 
 }
