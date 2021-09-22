@@ -2,19 +2,46 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Car list</title>
+    <title>Car-list</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
 </head>
 <body>
-<table>
+<div class="container my-2">
+    <h1>Cars List</h1>
+    <a th:href = "@{/car/showAddCarForm}" class="btn btn-primary btn-sm mb-3"> Add Car </a>
+<table border="1" class = "table table-striped table-responsive-md">
+    <thead>
     <tr>
-        <th>Brand </th>
-        <th>Model</th>
+        <th>Car Brand </th>
+        <th> Car Model</th>
+        <th> Car Body Type</th>
+        <th> Car Vintage</th>
+        <th> Car Mileage</th>
+        <th> Car Status</th>
+        <th> Car Amount per day</th>
+        <th> Action </th>
     </tr>
-    <tr th:each="car: ${cars}">
-        <td th:text="${car.id}"></td>
+     </thead>
+     <tbody>
+    <tr th:each="car : ${car}">
         <td th:text="${car.brand}"></td>
         <td th:text="${car.model}"></td>
+        <td th:text="${car.bodyType}"></td>
+        <td th:text="${car.vintage}"></td>
+        <td th:text="${car.mileage}"></td>
+        <td th:text="${car.status}"></td>
+        <td th:text="${car.amount}"></td>
+    <td> <a th:href="@{/car/showCarUpdateForm/{id}(id=${car.id})}" class="btn btn-primary">Update</a>
+        <!--                <a th:href="@{/employee/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>-->
+        <a th:href="@{'/car/deleteCar/' + ${car.id}}" class="btn btn-danger">Delete</a>
+    </td>
     </tr>
-</table>
+    </tbody>
+    </table>
+</div>
 </body>
 </html>
+
