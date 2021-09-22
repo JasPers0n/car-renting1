@@ -29,15 +29,21 @@
         <input type="text" th:field="*{branch}"
                placeholder="Employee Branch" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{price}"
-               placeholder="Employee Branch" class="form-control mb-4 col-4">
+        <select select class="form-select" aria-label="Default select example" th:field="*{client}">
+            <option th:each="client: ${client}" th:value="${client.id}" th:text="${client.getFullName}"></option>
+        </select>
+
+        <select select class="form-select" aria-label="Default select example" th:field="*{car}">
+            <option th:each="car: ${car}" th:value="${car.id}" th:text="${car.brand}"></option>
+        </select>
+
 
         <button type="submit" class="btn btn-info col-2"> Save Employee</button>
     </form>
 
     <hr>
 
-    <a th:href = "@{/employee/employee-list}"> Back to Employee List</a>
+    <a th:href = "@{/booking/booking-list}"> Show bookings </a>
 </div>
 </body>
 </html>

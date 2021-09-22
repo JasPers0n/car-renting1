@@ -68,6 +68,10 @@ public class Client {
         return email;
     }
 
+    public String getFullName() {
+        return name + surname;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
