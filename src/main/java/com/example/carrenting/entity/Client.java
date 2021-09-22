@@ -20,8 +20,7 @@ public class Client {
 
     }
 
-    public Client(Integer id, String name, String surname, String email, String address) {
-        this.id = id;
+    public Client(String name, String surname, String email, String address) {
         this.name = name;
         this.surname = surname;
         this.email = email;

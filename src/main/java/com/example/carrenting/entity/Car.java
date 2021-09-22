@@ -1,23 +1,22 @@
 package com.example.carrenting.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String brand;
     private String model;
+    private Status status;
 
-    public Car(Long id, String brand, String model) {
-        this.id = id;
+    public Car(String brand, String model, Status status) {
         this.brand = brand;
         this.model = model;
+        this.status = status;
     }
 
     public Car() {
