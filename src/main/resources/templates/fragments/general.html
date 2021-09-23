@@ -35,14 +35,32 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/car/car-list}">Cars</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user/register}">Zarejestruj</a>
+                </li>
+                <form sec:authorize="isAnonymous()" class="d-md-flex" th:action="@{/}" method="post" autocomplete="off">
+                    <label class="visually-hidden" for="login">Login</label>
+                    <input class="form-control me-1" name="username" type="text" placeholder="login" id="login">
+                    <label class="visually-hidden" for="password">Hasło</label>
+                    <input class="form-control me-1" name="password" type="password" placeholder="hasło" id="password">
+                    <button class="btn btn-outline-primary me-1" type="submit">Zaloguj</button>
+                    <a th:href="@{/user/register}" class="btn btn-outline-success">Zarejestruj</a>
+                </form>
+
+                <div sec:authorize="isAuthenticated()" class="d-flex align-items-center">
+                    <div class="me-2">Zalogowano jako: <strong sec:authentication="name"></strong></div>
+                    <form method="post" th:action="@{/logout}">
+                        <input type="submit" value="Wyloguj" class="btn btn-outline-primary">
+                    </form>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
         </div>
     </div>
 </nav>
-
+<div
 </body>
 </html>

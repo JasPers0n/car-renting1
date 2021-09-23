@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
 </head>
 <body>
+<div class="container my-2">
+<th:block th:replace="fragments/general.html :: my-navigation"></th:block>
+
+<div class="alert alert-primary">Zarejestrowano użytkownika</div>
+<a class="btn btn-primary" th:href="@{/}">Powrót do strony głównej</a>
+
+</div>
 
 </body>
 </html>

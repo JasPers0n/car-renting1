@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Rejestracja </title>
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
 </head>
 <body>
 
+<th:block th:replace="fragments/general.html :: my-navigation"></th:block>
 
+<form th:action="@{/user/register}" method="post">
+    <label>
+        Nazwa użytkownika:
+        <input type="text" name="username">
+    </label>
+    <label>
+        Hasło:
+        <input type="password" name="password">
+    </label>
+    <input type="submit">
 
+</form>
 </body>
 </html>
