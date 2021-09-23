@@ -17,16 +17,8 @@ public class Client {
     private String email;
     private String address;
 
-    public Client() {
 
-    }
 
-    public Client(String name, String surname, String email, String address) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.address = address;
-    }
 
     public void setId(Long id) {
         this.id = id;

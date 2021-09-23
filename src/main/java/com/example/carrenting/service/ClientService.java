@@ -11,6 +11,9 @@ public class ClientService {
 
     private ClientRepository clientRepository;
 
+
+
+
     public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
@@ -30,4 +33,6 @@ public class ClientService {
     public void deleteClientById(Long id) {
         this.clientRepository.deleteById(id);
     }
+
+
 }
