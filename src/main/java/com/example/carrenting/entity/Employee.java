@@ -1,6 +1,8 @@
 package com.example.carrenting.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Employee {
@@ -9,9 +11,16 @@ public class Employee {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Podaj imię")
     private String firstName;
+
+    @NotBlank(message = "Podaj nazwisko")
     private String lastName;
+
+    @NotNull
     private Position position;
+
+    @NotBlank(message = "Podaj Oddział")
     private String branch;
 
     public Long getId() {

@@ -4,6 +4,8 @@ import com.example.carrenting.entity.Employee;
 import com.example.carrenting.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -30,9 +32,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
-        employeeService.saveEmployee(employee);
-        return "redirect:/employee/employee-list";
+    public String saveEmployee(@Validated @ModelAttribute("employee") Employee employee, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/employee/employee-add-form";
+        } else {
+            employeeService.saveEmployee(employee);
+            return "redirect:/employee/employee-list";
+        }
     }
 
     @GetMapping("/showEmployeeUpdateForm/{id}")

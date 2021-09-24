@@ -13,17 +13,26 @@
 
   <form action="#" th:action="@{/employee/saveEmployee}" th:object="${employee}"
         method="POST">
-    <input type="text" th:field="*{firstName}"
-           placeholder="Employee First Name" class="form-control mb-4 col-4">
 
-    <input type="text" th:field="*{lastName}"
-           placeholder="Employee Last Name" class="form-control mb-4 col-4">
+    <input type="text"
+           placeholder="Employee First Name" class="form-control mb-4 col-4"
+           th:field="*{firstName}" th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid' : ''">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
 
-    <input type="text" th:field="*{position}"
-           placeholder="Employee Position(EMPLOYEE, MANAGER)" class="form-control mb-4 col-4">
+    <input type="text"
+           placeholder="Employee Last Name" class="form-control mb-4 col-4"
+           th:field="*{lastName}" th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid' : ''">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
 
-    <input type="text" th:field="*{branch}"
-           placeholder="Employee Branch" class="form-control mb-4 col-4">
+    <input type="text"
+           placeholder="Employee Position(EMPLOYEE, MANAGER)" class="form-control mb-4 col-4"
+           th:field="*{position}" th:classappend="${#fields.hasErrors('position')} ? 'is-invalid' : ''">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></div>
+
+    <input type="text"
+           placeholder="Employee Branch" class="form-control mb-4 col-4"
+           th:field="*{branch}" th:classappend="${#fields.hasErrors('branch')} ? 'is-invalid' : ''">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('branch')}" th:errors="*{branch}"></div>
 
     <button type="submit" class="btn btn-info col-2"> Save Employee</button>
   </form>
