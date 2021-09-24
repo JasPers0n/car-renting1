@@ -7,6 +7,8 @@ import com.example.carrenting.repository.ClientRepository;
 import com.example.carrenting.service.ClientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,9 +37,13 @@ public class ClientController {
     }
 
     @PostMapping("/saveClient")
-    public String saveClient(@ModelAttribute("client") Client client) {
+    public String saveClient(@Validated @ModelAttribute("client") Client client, BindingResult bindingResult) {
+       if (bindingResult.hasErrors()) {
+           return "/client/client-add-form";
+       }else{
         clientService.saveClient(client);
         return "redirect:/client/client-list";
+    }
     }
 
     @GetMapping("/showClientUpdateForm/{id}")

@@ -13,17 +13,22 @@
 
     <form action="#" th:action="@{/client/saveClient}" th:object="${client}"
           method="POST">
+
         <input type="text" th:field="*{name}"
-               placeholder="Client First Name" class="form-control mb-4 col-4">
+               placeholder="Client First Name" class="form-control mb-4 col-4"th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
         <input type="text" th:field="*{surname}"
-               placeholder="Client Last Name" class="form-control mb-4 col-4">
+               placeholder="Client Last Name" class="form-control mb-4 col-4"th:classappend="${#fields.hasErrors('surname')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
 
         <input type="text" th:field="*{email}"
-               placeholder="Client Email" class="form-control mb-4 col-4">
+               placeholder="Client Email" class="form-control mb-4 col-4"th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 
         <input type="text" th:field="*{address}"
-               placeholder="Client Address" class="form-control mb-4 col-4">
+               placeholder="Client Address" class="form-control mb-4 col-4"th:classappend="${#fields.hasErrors('address')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
 
         <button type="submit" class="btn btn-info col-2"> Save Client</button>
     </form>
