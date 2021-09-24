@@ -19,26 +19,40 @@
                th:field="*{brand}" th:classappend="${#fields.hasErrors('brand')} ? 'is-invalid' : ''">
         <div class="invalid-feedback" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></div>
 
-        <input type="text" th:field="*{model}"
-               placeholder="Car model" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car model" class="form-control mb-4 col-4"
+        th:field="*{model}" th:classappend="${#fields.hasErrors('model')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></div>
 
-        <input type="text" th:field="*{bodyType}"
-               placeholder="Car body type" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car body type" class="form-control mb-4 col-4"
+        th:field="*{bodyType}" th:classappend="${#fields.hasErrors('bodyType')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('bodyType')}" th:errors="*{bodyType}"></div>
 
-        <input type="text" th:field="*{color}"
-               placeholder="Car color" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car color" class="form-control mb-4 col-4"
+               th:field="*{color}" th:classappend="${#fields.hasErrors('color')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></div>
 
-        <input type="text" th:field="*{vintage}"
-               placeholder="Car vintage" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car vintage" class="form-control mb-4 col-4"
+        th:field="*{vintage}" th:classappend="${#fields.hasErrors('vintage')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('vintage')}" th:errors="*{vintage}"></div>
 
-        <input type="text" th:field="*{mileage}"
-               placeholder="Car mileage" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car mileage" class="form-control mb-4 col-4"
+               th:field="*{mileage}" th:classappend="${#fields.hasErrors('mileage')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}"></div>
 
-        <input type="text" th:field="*{status}"
-               placeholder="Car status(FREE,OCCUPIED)" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car status(FREE,OCCUPIED)" class="form-control mb-4 col-4"
+               th:field="*{status}" th:classappend="${#fields.hasErrors('status')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
 
-        <input type="text" th:field="*{amount}"
-               placeholder="Car amount per day" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car amount per day" class="form-control mb-4 col-4"
+               th:field="*{amount}" th:classappend="${#fields.hasErrors('amount')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></div>
 
         <button type="submit" class="btn btn-info col-2"> Save Car</button>
     </form>

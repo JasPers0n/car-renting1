@@ -16,7 +16,7 @@ public class Car {
     private Long id;
 
     @NotBlank(message = "Brand musi posiadać niebiały znak")
-    @Size(min = 3, message = "Brand musi posiadac minimum {min} znak")
+    @Size(min = 3, message = "Brand musi posiadac minimum {min} znaki")
     private String brand;
     @NotBlank(message = "model musi posiadać niebiały znak")
     @Size(min = 1, message = "model musi posiadac minimum {min} znak")
