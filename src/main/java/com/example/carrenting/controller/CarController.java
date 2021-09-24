@@ -46,7 +46,6 @@ public class CarController {
         }
     }
 
-
     @GetMapping("/showCarUpdateForm/{id}")
     public String showCarUpdateForm(@PathVariable Long id, Model model) {
         Car car = carService.getCarById(id);
