@@ -9,14 +9,18 @@
 
 <th:block th:replace="fragments/general.html :: my-navigation"></th:block>
 
-<form th:action="@{/user/register}" method="post">
+<form th:action="@{/user/register}" th:object="${user}" method="post">
     <label>
         Nazwa użytkownika:
-        <input type="text" name="username">
+        <input type="text" name="username"
+        th:field="*{username}" th:classappend="${#fields.hasErrors('username')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
     </label>
     <label>
         Hasło:
-        <input type="password" name="password">
+        <input type="password" name="password"
+        th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
     </label>
     <input type="submit">
 
