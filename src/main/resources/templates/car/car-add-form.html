@@ -4,6 +4,7 @@
     <meta charset="ISO-8859-1">
     <title>Car-add-form</title>
     <th:block th:replace="fragments/general.html :: head-tags"></th:block>
+
 </head>
 <body>
 <div class="container">
@@ -13,14 +14,19 @@
 
     <form action="#" th:action="@{/car/saveCar}" th:object="${car}"
           method="POST">
-        <input type="text" th:field="*{brand}"
-               placeholder="Car brand" class="form-control mb-4 col-4">
+        <input type="text"
+               placeholder="Car brand" class="form-control mb-4 col-4"
+               th:field="*{brand}" th:classappend="${#fields.hasErrors('brand')} ? 'is-invalid' : ''">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></div>
 
         <input type="text" th:field="*{model}"
                placeholder="Car model" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{bodyType}"
                placeholder="Car body type" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{color}"
+               placeholder="Car color" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{vintage}"
                placeholder="Car vintage" class="form-control mb-4 col-4">

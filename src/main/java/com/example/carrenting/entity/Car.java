@@ -1,25 +1,46 @@
 package com.example.carrenting.entity;
 
 
-import org.hibernate.boot.model.relational.Database;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
 @Table
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Brand musi posiadać niebiały znak")
+    @Size(min = 3, message = "Brand musi posiadac minimum {min} znak")
     private String brand;
+    @NotBlank(message = "model musi posiadać niebiały znak")
+    @Size(min = 1, message = "model musi posiadac minimum {min} znak")
     private String model;
+    @NotBlank(message = "Body type musi posiadać niebiały znak")
+    @Size(min = 1, message = "Body type musi posiadac minimum {min} znak")
     private String bodyType;
+    @NotBlank(message = "vintage musi posiadać niebiały znak")
+    @Size(min = 1, message = "vintage musi posiadac minimum {min} znak")
     private String vintage;
+    @NotBlank(message = "color musi posiadać niebiały znak")
+    @Size(min = 1, message = "color musi posiadac minimum {min} znak")
     private String color;
+    @NotNull
+
     private Double mileage;
+    @NotNull
+
     private Status status;
+
+
+    @NotNull
     private BigDecimal amount; //per day
+
 
     public Car(Long id, String brand, String model, String bodyType, String vintage, String color, Double mileage, Status status, BigDecimal amount) {
         this.id = id;
