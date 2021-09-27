@@ -22,6 +22,14 @@
         th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''">
         <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
     </label>
+    <label>
+        Role:
+        <select name="role">
+        <option value="CLIENT">Client</option>
+        <option value="EMPLOYEE">Employee</option>
+        <option value="MANAGER">Manager</option>
+        </select>
+    </label>
     <input type="submit">
 
 </form>

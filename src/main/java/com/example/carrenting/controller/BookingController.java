@@ -5,6 +5,7 @@ import com.example.carrenting.entity.Employee;
 import com.example.carrenting.service.BookingService;
 import com.example.carrenting.service.CarService;
 import com.example.carrenting.service.ClientService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@Secured({"ROLE_MANAGER", "ROLE_CLIENT", "ROLE_EMPLOYEE"})
 @RequestMapping("/booking")
 public class BookingController {
 

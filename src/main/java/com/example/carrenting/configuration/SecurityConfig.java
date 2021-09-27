@@ -3,11 +3,13 @@ package com.example.carrenting.configuration;
 
 import com.example.carrenting.service.UserService;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserService userService;
 
@@ -22,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/","/index","/car/**","/employee/**","/client/**","/booking/**","/user/**")
+                .antMatchers("/","/index", "/car/car-list", "/user/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

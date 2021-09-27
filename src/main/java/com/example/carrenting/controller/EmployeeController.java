@@ -2,6 +2,7 @@ package com.example.carrenting.controller;
 
 import com.example.carrenting.entity.Employee;
 import com.example.carrenting.service.EmployeeService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@Secured("ROLE_MANAGER")
 @RequestMapping("/employee")
 public class EmployeeController {
 

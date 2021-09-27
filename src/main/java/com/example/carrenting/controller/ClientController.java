@@ -5,6 +5,7 @@ import com.example.carrenting.entity.Client;
 import com.example.carrenting.entity.Employee;
 import com.example.carrenting.repository.ClientRepository;
 import com.example.carrenting.service.ClientService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@Secured({"ROLE_MANAGER", "ROLE_EMPLOYEE"})
 @RequestMapping("/client")
 public class ClientController {
 

@@ -24,11 +24,11 @@ public class User implements UserDetails {
     @NotBlank(message = "Password musi posiadać 8 znaków w tym jedną wielką literę")
     @Size(min = 8, message = "Password musi posiadac minimum {min} znaki")
     private String password;
-    private String role = "USER";
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE" + role));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + role));
     }
 
 

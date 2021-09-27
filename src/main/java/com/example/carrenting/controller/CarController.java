@@ -2,6 +2,7 @@ package com.example.carrenting.controller;
 
 import com.example.carrenting.entity.Car;
 import com.example.carrenting.service.CarService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +28,7 @@ public class CarController {
         return "car/car-list";
     }
 
-
+    @Secured({"ROLE_MANAGER", "ROLE_EMPLOYEE"})
     @GetMapping("/showAddCarForm")
     public String showAddCarForm(Model model) {
         Car car = new Car();
@@ -35,7 +36,7 @@ public class CarController {
         return "/car/car-add-form";
     }
 
-
+    @Secured({"ROLE_MANAGER", "ROLE_EMPLOYEE"})
     @PostMapping("/saveCar")
     public String saveCar(@Validated @ModelAttribute("car") Car car, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -45,7 +46,7 @@ public class CarController {
             return "redirect:/car/car-list";
         }
     }
-
+    @Secured({"ROLE_MANAGER", "ROLE_EMPLOYEE"})
     @GetMapping("/showCarUpdateForm/{id}")
     public String showCarUpdateForm(@PathVariable Long id, Model model) {
         Car car = carService.getCarById(id);
@@ -53,7 +54,7 @@ public class CarController {
         return "/car/car-update-form";
     }
 
-
+    @Secured({"ROLE_MANAGER", "ROLE_EMPLOYEE"})
     @GetMapping("/deleteCar/{id}")
     public String deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
